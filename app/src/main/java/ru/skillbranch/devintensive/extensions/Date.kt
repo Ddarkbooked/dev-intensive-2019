@@ -1,6 +1,5 @@
 package ru.skillbranch.devintensive.extensions
 
-import java.lang.IllegalStateException
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -31,8 +30,19 @@ fun Date.add(value: Int, units: TimeUnits = TimeUnits.SECONDS): Date {
 }
 
 fun Date.humanizeDiff(date: Date = Date()): String {
-    TODO()
+    var time = this.time
+    var outputTime: String
+
+    outputTime = when (date) {
+        date.add(time.toInt(), TimeUnits.SECONDS) -> "несколько $SECOND назад"
+        else -> "только что"
+    }
+
+    return outputTime
 }
+
+
+
 
 enum class TimeUnits{
     SECONDS,
